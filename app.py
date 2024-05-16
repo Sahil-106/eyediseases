@@ -11,7 +11,7 @@ def preprocess_image(image):
     return img
 
 # Streamlit app
-st.title("Image Classification")
+st.title("eye diseases detection")
 
 # Upload an image
 uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "png"])
