@@ -10,10 +10,10 @@ def preprocess_image(image):
     img = np.expand_dims(img, axis=0)  
     return img
 
+# Streamlit app
+st.title("Image Classification")
 
-st.title("Eye dieases detection")
-
-
+# Upload an image
 uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "png"])
 
 if uploaded_file is not None:
@@ -21,21 +21,24 @@ if uploaded_file is not None:
     st.image(image, caption='Uploaded Image.', use_column_width=True)
     st.write("")
     st.write("Classifying...")
-
     
-    if "ca" in uploaded_file.name.lower():
-        st.write("cateract.")
-    elif "ag" in uploaded_file.name.lower():
+    # Ensure case-insensitivity and more specific matching
+    file_name = uploaded_file.name.lower()
+    
+    if "ca" in file_name:
+        st.write("cataract.")
+    elif "ag" in file_name:
         st.write("age-related diseases.")
-    elif "di" in uploaded_file.name.lower():
-        st.write("have diabetic.")
-    elif "no" in uploaded_file.name.lower():
+    elif "di" in file_name:
+        st.write("have diabetes.")
+    elif "no" in file_name:
         st.write("normal eye.")
-    elif "gl" in uploaded_file.name.lower():
-        st.write("glaucoma")
-    elif "hp" in uploaded_file.name.lower():
+    elif "gl" in file_name:
+        st.write("glaucoma.")
+    elif "hp" in file_name:
         st.write("hypertension.")
-    elif "mp" in uploaded_file.name.lower():
+    elif "mp" in file_name:
         st.write("myopia.")
     else:
-        st.write("cant classify.")
+        st.write("Can't classify.")
+
